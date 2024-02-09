@@ -15,7 +15,7 @@ public class LoanCalc {
 		// Gets the loan data
 		
 		double loan = Double.parseDouble(args[0]);
-		double rate = 1.00 + (Double.parseDouble(args[1])/100);
+		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
 		System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -91,7 +91,7 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {
 		for (int i=0; i<n; i++){
 			loan = (loan - payment);
-			loan *= rate;
+			loan *= (1 + rate/100);
 		}
     	return loan;
 	}
