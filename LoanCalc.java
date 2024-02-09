@@ -13,8 +13,9 @@ public class LoanCalc {
      */
 	public static void main(String[] args) {		
 		// Gets the loan data
+		
 		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
+		double rate = 1.00 + (Double.parseDouble(args[1])/100);
 		int n = Integer.parseInt(args[2]);
 		System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -29,6 +30,7 @@ public class LoanCalc {
 		System.out.printf("%.2f", bisectionSolver(loan, rate, n, epsilon));
 		System.out.println();
 		System.out.println("number of iterations: " + iterationCounter);
+
 	}
 	
 	/**
@@ -88,7 +90,8 @@ public class LoanCalc {
 	*/
 	private static double endBalance(double loan, double rate, int n, double payment) {
 		for (int i=0; i<n; i++){
-			loan = (loan - payment)*rate;
+			loan = (loan - payment);
+			loan *= rate;
 		}
     	return loan;
 	}
